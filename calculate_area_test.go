@@ -13,7 +13,7 @@ func TestCalcShapeArea(t *testing.T) {
 		description string
 	}{
 		{"rectangle", []float64{5, 10}, 50.0, "Valid Rectangle"},
-		{"circle", []float64{7}, math.Pi * 49.0, "Valid Circle"},
+		{"circle", []float64{7}, float64(math.Pi * math.Pow(7, 2)), "Valid Circle"},
 		{"triangle", []float64{8, 4}, 16.0, "Valid Triangle"},
 		{"square", []float64{5}, 25.0, "Valid Square"},
 		{"rectangle", []float64{5}, -1.0, "Invalid Rectangle"},
