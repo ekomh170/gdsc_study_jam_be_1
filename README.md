@@ -1,5 +1,10 @@
 ## Task Study Jam GDSC NF - Backend Day 1 (BE)
 
+## Peserta Pengerjaan :
+
+- Nama : Eko Muchamad Haryono
+- NIM : 0110223079
+
 ## Atention
 
 ### Exercise 1 :
@@ -11,7 +16,7 @@
   - Rectangle : `area = length * width`
   - Triangle : `area = 0.5 * base * height`
 - You can run the program with `go run calculate_area.go`
-- You can run the test with `go test calculate_area_test.go`
+- You can run the test with `go test -run '^TestCalcShapeArea$' go-exercise`
 
 ### Exercise 2 :
 
@@ -28,4 +33,4 @@
   - Search a contact
   - List all contacts
 - You can run the program with `go run contact_list.go`
-- You can run the test with `go test contact_list_test.go`
+- You can run the test with `go test -run '^(TestContactList_AddContact|TestContactList_GetContact|TestContactList_UpdateContact|TestContactList_DeleteContact)$' go-exercise`
