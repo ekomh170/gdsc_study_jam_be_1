@@ -1,12 +1,10 @@
 package main
 
 import (
-	"errors"
 	"testing"
 )
 
-var ErrContactNotFound = errors.New("contact not found")
-var ErrContactExists = errors.New("contact already exists")
+var cl ContactList = *NewContactList()
 
 func TestContactList_AddContact(t *testing.T) {
 	testCases := []struct {
@@ -18,8 +16,6 @@ func TestContactList_AddContact(t *testing.T) {
 		{"Jane", Contact{Name: "Jane", Email: "jane@example.com", Phone: "9876543210"}, nil},
 		{"Duplicate", Contact{Name: "John", Email: "newjohn@example.com", Phone: "5555555555"}, ErrContactExists},
 	}
-
-	cl := NewContactList()
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -42,8 +38,6 @@ func TestContactList_GetContact(t *testing.T) {
 		{"Jane", "Jane", Contact{Name: "Jane", Email: "jane@example.com", Phone: "9876543210"}, nil},
 		{"NotFound", "NonExistent", Contact{}, ErrContactNotFound},
 	}
-
-	cl := NewContactList()
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -69,8 +63,6 @@ func TestContactList_UpdateContact(t *testing.T) {
 		{"NotFound", "NonExistent", Contact{}, ErrContactNotFound},
 	}
 
-	cl := NewContactList()
-
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			err := cl.UpdateContact(tc.originalName, tc.updatedContact)
@@ -90,8 +82,6 @@ func TestContactList_DeleteContact(t *testing.T) {
 		{"John", "John", nil},
 		{"NotFound", "NonExistent", ErrContactNotFound},
 	}
-
-	cl := NewContactList()
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {

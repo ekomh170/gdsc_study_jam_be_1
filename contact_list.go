@@ -1,11 +1,20 @@
 package main
 
-/* Hint : Expected output list contactd (map[string]Contact) looks like this:
-    [
-	'asnur ramdani' : {Name: 'asnur ramdani', Email: 'asnurramdhani12@gmail.com', Phone: '085156156156'},
-	'joko' : {Name: 'joko', Email: 'joko@gmail.com', Phone: '085156156156'},
-	...
-	]
+import "errors"
+
+// var of errors
+var (
+	ErrContactNotFound = errors.New("contact not found")
+	ErrContactExists   = errors.New("contact already exists")
+)
+
+/*
+	 Hint : Expected output list contactd (map[string]Contact) looks like this:
+	    [
+		'asnur ramdani' : {Name: 'asnur ramdani', Email: 'asnurramdhani12@gmail.com', Phone: '085156156156'},
+		'joko' : {Name: 'joko', Email: 'joko@gmail.com', Phone: '085156156156'},
+		...
+		]
 */
 type Contact struct {
 	Name  string
