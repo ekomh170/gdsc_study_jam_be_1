@@ -32,20 +32,36 @@ func NewContactList() *ContactList {
 
 func (cl *ContactList) AddContact(contact Contact) error {
 	// TODO 1: Add a new contact to the contact list. Return an error if the contact already exists.
+	if _, exists := cl.contacts[contact.Name]; exists {
+		return ErrContactExists
+	}
+	cl.contacts[contact.Name] = contact
 	return nil
 }
 
 func (cl *ContactList) GetContact(name string) (Contact, error) {
 	// TODO 2 : Retrieve a contact by their name. Return an error if the contact doesn't exist.
-	return Contact{}, nil
+	contact, exists := cl.contacts[name]
+	if !exists {
+		return Contact{}, ErrContactNotFound
+	}
+	return contact, nil
 }
 
 func (cl *ContactList) UpdateContact(name string, updatedContact Contact) error {
 	// TODO 3: Update the details of an existing contact. Return an error if the contact doesn't exist.
+	if _, exists := cl.contacts[name]; !exists {
+		return ErrContactNotFound
+	}
+	cl.contacts[name] = updatedContact
 	return nil
 }
 
 func (cl *ContactList) DeleteContact(name string) error {
 	// TODO 4: Delete a contact from the contact list. Return an error if the contact doesn't exist.
+	if _, exists := cl.contacts[name]; !exists {
+		return ErrContactNotFound
+	}
+	delete(cl.contacts, name)
 	return nil
 }
